@@ -4,8 +4,7 @@
  *
  * @format
  */
-
-import {NavigationContainer} from '@react-navigation/native';
+import 'react-native-gesture-handler';
 import React, {useEffect, useState} from 'react';
 import {
   SafeAreaView,
@@ -24,6 +23,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import AppNavConatiner from './src/navigations';
 
 function Section({children, title}) {
   const isDarkMode = useColorScheme() === 'dark';
@@ -55,39 +55,39 @@ function App() {
   const [data, setData] = useState([]);
   const isDarkMode = useColorScheme() === 'dark';
 
-  const getPosts = () => {
-    fetch('https://jsonplaceholder.typicode.com/posts', {
-      method: 'get',
-    })
-      .then(res => res.json())
-      .then(data => setData(data));
-  };
+  // const getPosts = () => {
+  //   fetch('https://jsonplaceholder.typicode.com/posts', {
+  //     method: 'get',
+  //   })
+  //     .then(res => res.json())
+  //     .then(data => setData(data));
+  // };
 
-  console.log('data', data);
+  // console.log('data', data);
 
-  useEffect(() => {
-    getPosts();
-  }, []);
+  // useEffect(() => {
+  //   getPosts();
+  // }, []);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
   return (
-    <NavigationContainer>
-      <SafeAreaView>
-        {/* <StatusBar
+    <SafeAreaView>
+      {/* <StatusBar
        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
      backgroundColor={backgroundStyle.backgroundColor}
-     /> */}
-        <Text style={{...styles.text, color: 'red'}}>Hello</Text>
-        <ScrollView>
-          {data.map(item => {
-            return <Text>{item?.title}</Text>;
-          })}
-        </ScrollView>
-      </SafeAreaView>
-    </NavigationContainer>
+     />
+      <Text style={{...styles.text, color: 'red'}}>Hello</Text>
+      <ScrollView>
+        {data.map(item => {
+          return <Text>{item?.title}</Text>;
+        })}
+      </ScrollView> */}
+      <Text>hello</Text>
+      <AppNavConatiner />
+    </SafeAreaView>
   );
 }
 
